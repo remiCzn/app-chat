@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "UMD",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src/",
     "sourceMap": true,
-    "declarationMap": true,
-    "declaration": true
+    "declaration": true,
+    "declarationMap": true
   }
 }

@@ -2,11 +2,15 @@
   "name": "app-chat-business",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "typescript": "^4.6.3"
   },
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "app-chat-model": "file:../app-chat-model"
   }
 }

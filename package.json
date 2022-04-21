@@ -1,0 +1,9 @@
+{
+  "name": "app-chat",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "server": "cd app-chat-api && npm start",
+    "web": "cd app-chat-web && npm start"
+  }
+}
