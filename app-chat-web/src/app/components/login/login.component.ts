@@ -28,4 +28,13 @@ export class LoginComponent implements OnInit {
       console.log(res.data);
     })
   }
+
+  send() {
+    axios.post("http://localhost:8080/login", {
+      login: "aaa",
+      password: "bbb"
+    }).then((res) => {
+      console.log(res);
+    })
+  }
 }

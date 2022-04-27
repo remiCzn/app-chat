@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "app-chat-model": "file:../app-chat-model",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "4.17.3",
     "morgan": "1.10.0",
