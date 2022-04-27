@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "devDependencies": {
     "typescript": "^4.6.3"
   },

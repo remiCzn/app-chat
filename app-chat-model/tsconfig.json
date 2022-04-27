@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "UMD",
-    "moduleResolution": "Node",
+    "module": "esnext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "src/",
+    "baseUrl": "./",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true

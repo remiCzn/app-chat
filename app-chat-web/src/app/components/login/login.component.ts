@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiDescriptor} from "app-chat-model";
+import axios from 'axios';
+import {io, Socket} from "socket.io-client";
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,21 @@ export class LoginComponent implements OnInit {
   public password: string = '';
   public email: string = '';
 
+  private ioClient: Socket<any,any>;
+
   constructor() {
-    const a : ApiDescriptor = new ApiDescriptor();
-    a.version = "1.0.0";
-    console.log(a.getVersion());
+    this.ioClient = io("localhost:8081");
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ioClient.on('connect', () => {
+      console.log("okok");
+    })
+
+    this.ioClient.emit('login', {a: 'aa', b: 'bb'})
+
+    axios.get("http://localhost:8080").then((res) => {
+      console.log(res.data);
+    })
+  }
 }

@@ -1,1 +1,1 @@
-export {ApiDescriptor} from "./api"
+export * from "./api"
