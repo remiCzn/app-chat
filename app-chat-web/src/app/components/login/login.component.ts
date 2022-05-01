@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
-import {io, Socket} from "socket.io-client";
+import {HttpClientService} from "../../services/http-client.service";
+import {SocketIoClientService} from "../../services/socket.io-client.service";
 
 @Component({
   selector: 'app-login',
@@ -11,30 +11,17 @@ export class LoginComponent implements OnInit {
   public password: string = '';
   public email: string = '';
 
-  private ioClient: Socket<any,any>;
-
-  constructor() {
-    this.ioClient = io("localhost:8081");
+  constructor(private httpClient: HttpClientService, private ioClient: SocketIoClientService) {
   }
 
   ngOnInit(): void {
-    this.ioClient.on('connect', () => {
-      console.log("okok");
-    })
-
     this.ioClient.emit('login', {a: 'aa', b: 'bb'})
 
-    axios.get("http://localhost:8080").then((res) => {
-      console.log(res.data);
-    })
+    this.httpClient.get("/");
   }
 
   send() {
-    axios.post("http://localhost:8080/login", {
-      login: "aaa",
-      password: "bbb"
-    }).then((res) => {
-      console.log(res);
-    })
+    this.httpClient.post<{login: string, password: string}>("/login", {login: "aaaaaa", password: "aaaaa"})
+
   }
 }
