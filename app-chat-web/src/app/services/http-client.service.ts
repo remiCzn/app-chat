@@ -10,26 +10,26 @@ export class HttpClientService {
   constructor(private http: HttpClient) {}
 
   get(endpoint: string) {
-    this.http.get(`${HttpClientService.URL_SERVER}${endpoint}`).subscribe(
-      (res) => {
+    this.http.get(`${HttpClientService.URL_SERVER}${endpoint}`).subscribe({
+      next: (res) => {
         console.log(res);
       },
-      (error) => {
+      error: (error) => {
         console.log(error);
-      }
-    );
+      },
+    });
   }
 
   post<T>(endpoint: string, body: T) {
     this.http
       .post(`${HttpClientService.URL_SERVER}${endpoint}`, body)
-      .subscribe(
-        (res) => {
+      .subscribe({
+        next: (res) => {
           console.log(res);
         },
-        (err) => {
+        error: (err) => {
           console.log(err);
-        }
-      );
+        },
+      });
   }
 }
