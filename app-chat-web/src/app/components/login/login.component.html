@@ -5,23 +5,23 @@
     <div>
       <label for="email">Email Adress</label>
       <input
-        type="email"
+        [(ngModel)]="email"
         id="email"
         name="email"
         placeholder="Enter your email"
-        [(ngModel)]="email"
+        type="email"
       />
     </div>
     <div>
       <label for="password">Password</label>
       <input
-        type="password"
+        [(ngModel)]="password"
         id="password"
         name="password"
         placeholder="Enter your password"
-        [(ngModel)]="password"
+        type="password"
       />
     </div>
-    <button (click)="send()">Send</button>
+    <button (click)="send()" class="btn">Send</button>
   </form>
 </div>

@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan("common"));
 
-app.use('/auth', authApi);
+app.use("/auth", authApi);
 
 app.listen(PORT, () => {
-    console.log(`API Connected on port ${PORT}`);
-})
+  console.log(`API Connected on port ${PORT}`);
+});

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Socket, io} from "socket.io-client";
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SocketIoClientService {
-
-  private SOCKET_URL = "http://localhost:8081";
-  private ioClient : Socket<any, any>;
+  private SOCKET_URL = 'http://localhost:8081';
+  private ioClient: Socket<any, any>;
 
   constructor() {
     this.ioClient = io(this.SOCKET_URL);
