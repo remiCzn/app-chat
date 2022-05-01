@@ -1,3 +1,15 @@
 .btn {
-  @apply py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400
+  @apply py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400
+}
+
+.input-box {
+  @apply flex flex-col border rounded-xl p-0.5 border-blue-600
+}
+
+.input-label {
+  @apply pl-1 p-0.5 text-gray-900 text-sm
+}
+
+.input-input {
+  @apply border-transparent outline-transparent bg-transparent py-0.5
 }
