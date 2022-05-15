@@ -1,5 +1,5 @@
 import dbClient from "../prisma/dbClient";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, user } from "@prisma/client";
 
 export class UserRepository {
   private db: PrismaClient;
@@ -8,11 +8,23 @@ export class UserRepository {
     this.db = dbClient;
   }
 
-  public createUser(username: string, password: string) {
-    return this.db.user.create({
-      data: {
+  public createUser(username: string, password: string): Promise<void> {
+    return this.db.user
+      .create({
+        data: {
+          username: username,
+          password: password,
+        },
+      })
+      .then((user) => {
+        console.log("User Created: " + user.username);
+      });
+  }
+
+  public findUserByUsername(username: string): Promise<Array<user>> {
+    return this.db.user.findMany({
+      where: {
         username: username,
-        password: password,
       },
     });
   }

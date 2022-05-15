@@ -10,26 +10,32 @@ export class HttpClientService {
   constructor(private http: HttpClient) {}
 
   get(endpoint: string) {
-    this.http.get(`${HttpClientService.URL_SERVER}${endpoint}`).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (error) => {
-        console.log(error);
-      },
+    return new Promise((resolve, reject) => {
+      this.http.get(`${HttpClientService.URL_SERVER}${endpoint}`).subscribe({
+        next: (res) => {
+          resolve(res);
+        },
+        error: (err) => {
+          reject(err);
+        },
+      });
     });
   }
 
   post<T>(endpoint: string, body: T) {
-    this.http
-      .post(`${HttpClientService.URL_SERVER}${endpoint}`, body)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(`${HttpClientService.URL_SERVER}${endpoint}`, body)
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            resolve(res);
+          },
+          error: (err) => {
+            console.error(err);
+            reject(err);
+          },
+        });
+    });
   }
 }

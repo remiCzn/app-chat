@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/morgan": "^1.9.3",
     "@types/node": "^17.0.25",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@prisma/client": "^3.13.0",
     "app-chat-model": "file:../app-chat-model",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "4.17.3",

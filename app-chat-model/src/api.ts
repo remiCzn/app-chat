@@ -1,4 +1,1 @@
-export interface LoginApi {
-  login: string;
-  password: string;
-}
+export * from "./api/login";
