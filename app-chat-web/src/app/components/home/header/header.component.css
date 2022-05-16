@@ -1,0 +1,11 @@
+app-left-header {
+  @apply text-sm box-border flex items-center h-10 flex-shrink-0
+}
+
+app-center-header {
+  @apply text-sm box-border flex items-center h-10 justify-center flex-grow ml-3
+}
+
+app-right-header {
+  @apply text-sm box-border flex items-center h-10 flex-shrink-0 relative ml-3
+}

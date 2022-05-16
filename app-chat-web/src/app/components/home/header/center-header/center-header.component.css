@@ -1,0 +1,23 @@
+.text-input {
+  @apply m-0 block rounded-sm text-left box-border appearance-none w-full h-6 pt-1 pr-12 pb-0 pl-12 bg-transparent shadow-none text-xs
+}
+
+.search-icon {
+  @apply text-sm box-border absolute top-0 flex h-full items-center pointer-events-none
+}
+
+form {
+  @apply text-sm box-border relative flex items-center p-0 rounded overflow-visible bg-gray-600
+}
+
+form:focus-within {
+  @apply text-gray-800 bg-gray-100
+}
+
+.center-bar-box {
+  @apply text-sm box-border flex items-center p-0 m-0;
+  flex: 1 1 0;
+  flex-flow: row nowrap;
+  justify-content: initial;
+  max-width: 400px;
+}

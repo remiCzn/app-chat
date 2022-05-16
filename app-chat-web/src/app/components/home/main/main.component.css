@@ -1,0 +1,11 @@
+.main-container {
+  @apply text-sm text-gray-800 box-border pr-4 pl-4 mr-auto ml-auto relative h-full
+}
+
+.channels {
+  @apply text-sm text-gray-800 box-border fixed left-0 flex w-56 flex-col
+}
+
+.main {
+  @apply text-sm text-gray-800 box-border h-full
+}

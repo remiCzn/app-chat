@@ -1,5 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalService, ModalTypes } from '../../../services/modal.service';
+import { ModalService } from '../../../services/modal.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { LoginClientService } from '../login-client.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,18 +15,37 @@ import { ModalService, ModalTypes } from '../../../services/modal.service';
   styleUrls: ['../login.component.css'],
 })
 export class SigninComponent implements OnInit {
-  email: string = '';
-  password: string = '';
+  LoginForm: FormGroup;
 
-  constructor(private modal: ModalService) {}
+  usernameCtrl: FormControl;
+  passwordCtrl: FormControl;
+
+  constructor(
+    private modal: ModalService,
+    private fb: FormBuilder,
+    private client: LoginClientService,
+    private router: Router
+  ) {
+    this.usernameCtrl = this.fb.control('', Validators.required);
+    this.passwordCtrl = this.fb.control('', Validators.required);
+    this.LoginForm = this.fb.group({
+      username: this.usernameCtrl,
+      password: this.passwordCtrl,
+    });
+  }
 
   @Input() goToSignUp: () => void = () => {};
 
   ngOnInit(): void {}
 
-  send() {
-    this.modal.open("Can't Login", ModalTypes.ERROR, () => {
-      console.log('okok');
-    });
+  async send() {
+    const username = this.LoginForm.controls['username'].value;
+    const password = this.LoginForm.controls['password'].value;
+    const loggedIn = await this.client.login(username, password);
+    console.log(loggedIn);
+    if (loggedIn) {
+      console.log('ok');
+      this.router.navigate(['home']);
+    }
   }
 }

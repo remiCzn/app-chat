@@ -1,0 +1,11 @@
+.root {
+  @apply text-sm text-gray-800 box-border overflow-hidden relative h-full flex flex-col
+}
+
+.main-header {
+  @apply text-sm box-border relative flex flex-shrink-0 items-center justify-between h-10 px-3 py-0 bg-black text-gray-100
+}
+
+.main-content {
+  @apply text-sm text-gray-800 box-border overflow-hidden relative h-full
+}

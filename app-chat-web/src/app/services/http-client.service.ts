@@ -22,10 +22,12 @@ export class HttpClientService {
     });
   }
 
-  post<T>(endpoint: string, body: T) {
+  post<T>(endpoint: string, body: T): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http
-        .post(`${HttpClientService.URL_SERVER}${endpoint}`, body)
+        .post(`${HttpClientService.URL_SERVER}${endpoint}`, body, {
+          headers: {},
+        })
         .subscribe({
           next: (res) => {
             console.log(res);

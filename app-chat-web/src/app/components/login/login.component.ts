@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtTokenService } from '../../services/jwt-token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,13 @@ export class LoginComponent implements OnInit {
 
   public mode: 'SignIn' | 'SignUp' = 'SignIn';
 
-  constructor() {}
+  constructor(private jwtService: JwtTokenService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.jwtService.getToken() && !this.jwtService.isTokenExpired()) {
+      this.router.navigate(['home']);
+    }
+  }
 
   send() {}
 

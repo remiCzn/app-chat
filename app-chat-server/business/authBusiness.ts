@@ -1,8 +1,10 @@
 import { UserRepository } from "../repository/userRepository";
-import { RegisterApi } from "app-chat-model";
+import { LoginApi, RegisterApi } from "app-chat-model";
 import { BusinessError } from "./utils/businessError";
 import { user } from "@prisma/client";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { CONFIG } from "../common/env";
 
 const REGEXP_PASSWORD: RegExp = new RegExp("^(?=.*\\d).{6,}$");
 
@@ -13,9 +15,10 @@ export class AuthBusiness {
     this.userRepository = new UserRepository();
 
     this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
   }
 
-  public register(parameters: RegisterApi) {
+  public register(parameters: RegisterApi): Promise<void> {
     const username: string = parameters.username;
     const password: string = parameters.password;
     if (username.length < 5) {
@@ -39,5 +42,31 @@ export class AuthBusiness {
           return this.userRepository.createUser(username, encrypted);
         });
       });
+  }
+
+  public async login(parameters: LoginApi) {
+    const username = parameters.username;
+    const password = parameters.password;
+
+    const users = await this.userRepository.findUserByUsername(username);
+    if (users.length > 0) {
+      const user = users[0];
+      const passwordIsValid = bcrypt.compareSync(password, user.password);
+      if (passwordIsValid) {
+        return jwt.sign(
+          {
+            userId: user.id.toString(),
+          },
+          CONFIG.JWT_TOKEN,
+          {
+            expiresIn: CONFIG.JWT_EXPIRES,
+          }
+        );
+      } else {
+        throw new BusinessError("Wrong password");
+      }
+    } else {
+      throw new BusinessError("This user doesn't exists");
+    }
   }
 }
