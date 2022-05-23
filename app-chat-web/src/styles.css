@@ -4,5 +4,9 @@
 @tailwind screens;
 
 body {
-  @apply box-border m-0 text-sm w-full bg-gray-200 overflow-hidden relative h-full text-gray-800;
+  @apply box-border m-0 text-sm w-full overflow-hidden relative h-screen text-gray-800;
+}
+
+app-root {
+  @apply text-sm text-gray-800 box-border overflow-hidden relative h-screen flex flex-col;
 }

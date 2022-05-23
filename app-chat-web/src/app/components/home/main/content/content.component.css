@@ -1,7 +1,0 @@
-.main {
-  @apply text-sm text-gray-800 box-border -mr-4 -ml-4 relative h-full;
-}
-
-.content {
-  @apply text-sm box-border relative flex h-full flex-col pt-0 text-gray-800 ml-56;
-}

@@ -1,11 +1,16 @@
-.root {
-  @apply text-sm text-gray-800 box-border overflow-hidden relative h-full flex flex-col
+.body {
+  @apply h-screen overflow-hidden flex items-center justify-center;
+  background-color: #edf2f7;
 }
 
-.main-header {
-  @apply text-sm box-border relative flex flex-shrink-0 items-center justify-between h-10 px-3 py-0 bg-black text-gray-100
+app-servers-list {
+  @apply bg-indigo-900 text-purple-100 flex-none w-24 p-6 hidden md:block;
 }
 
-.main-content {
-  @apply text-sm text-gray-800 box-border overflow-hidden relative h-full
+app-channels {
+  @apply bg-indigo-800 text-purple-100 flex-none w-64 pb-6 hidden md:block;
+}
+
+app-main {
+  @apply flex-1 flex flex-col bg-white overflow-hidden w-full;
 }
