@@ -1,9 +1,9 @@
 <div class="text-white mb-2 mt-3 px-4 flex justify-between">
   <div class="flex-auto">
-    <h1 class="font-semibold text-xl leading-tight mb-1 truncate">Tailwind CSS</h1>
+    <h1 class="font-semibold text-xl leading-tight mb-1 truncate">{{ servername }}</h1>
     <div class="flex items-center mb-6">
       <span class="bg-green-500 rounded-full block w-2 h-2 mr-2"></span>
-      <span class="text-white opacity-50 text-sm">Adam Wathan</span>
+      <span class="text-white opacity-50 text-sm">{{ username }}</span>
     </div>
   </div>
   <div class="cursor-pointer">
@@ -17,8 +17,7 @@
       <img alt="plus" class="fill-current h-5 w-5 opacity-50 hover:opacity-85" src="assets/add_circle.svg"/>
     </div>
   </div>
-  <div class="bg-teal-700 py-1 px-4 text-white"># general</div>
-  <app-channel-button name="general">
+  <app-channel-button [active]="true" name="general">
     <span class="block mr-2 mt-1 text-white opacity-75 hover:opacity-100">#</span>
   </app-channel-button>
 </div>

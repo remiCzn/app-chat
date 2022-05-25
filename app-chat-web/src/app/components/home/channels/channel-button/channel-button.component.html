@@ -1,2 +1,6 @@
-<ng-content></ng-content>
-<span class="text-white opacity-75 hover:opacity-100">{{name}}</span>
+<div [ngClass]="active? 'bg-teal-700': ''"
+     class="flex items-center w-full h-full py-1.5 px-4 cursor-pointer">
+  <ng-content></ng-content>
+  <span [ngClass]="active? 'opacity-100' : 'opacity-75'" class="text-white hover:opacity-100">{{name}}</span>
+</div>
+

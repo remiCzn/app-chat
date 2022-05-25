@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ChannelButtonComponent implements OnInit {
   @Input() name: string = '';
+  @Input() active: boolean = false;
 
   constructor() {}
 

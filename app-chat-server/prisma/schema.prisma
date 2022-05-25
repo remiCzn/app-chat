@@ -11,4 +11,29 @@ model user {
   id       Int    @id @default(autoincrement())
   username String @db.VarChar(255)
   password String @db.VarChar(255)
+
+  messages message[]
+}
+
+model server {
+ id Int @id @default(autoincrement())
+ channels channel[]
+}
+
+model channel {
+ id Int @id @default(autoincrement())
+ name String
+ description String
+ server server @relation(fields: [serverId], references: [id])
+ serverId Int
+ messages message[]
+}
+
+model message {
+ id Int @id @default(autoincrement())
+ text String
+ channel channel @relation(fields: [channelId], references: [id])
+ channelId Int
+ user user @relation(fields: [userId], references: [id])
+ userId Int
 }

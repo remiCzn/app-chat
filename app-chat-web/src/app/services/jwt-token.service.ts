@@ -25,4 +25,8 @@ export class JwtTokenService {
     }
     return false;
   }
+
+  logout() {
+    localStorage.clear();
+  }
 }
