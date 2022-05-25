@@ -1,0 +1,3 @@
+app-channel-button {
+  @apply flex items-center mb-3 px-4 cursor-pointer;
+}
