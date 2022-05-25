@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import bodyParser from "body-parser";
 import authApi from "./authApi";
+import userApi from "./userApi";
 
 const PORT = 8080;
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 app.use(morgan("common"));
 
 app.use("/auth", authApi);
+app.use("/user", userApi);
 
 app.listen(PORT, () => {
   console.log(`API Connected on port ${PORT}`);

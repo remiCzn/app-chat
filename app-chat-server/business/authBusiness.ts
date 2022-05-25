@@ -3,16 +3,17 @@ import { LoginApi, RegisterApi } from "app-chat-model";
 import { BusinessError } from "./utils/businessError";
 import { user } from "@prisma/client";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { CONFIG } from "../common/env";
+import { JwtHandler } from "./utils/jwtHandler";
 
 const REGEXP_PASSWORD: RegExp = new RegExp("^(?=.*\\d).{6,}$");
 
 export class AuthBusiness {
   private userRepository: UserRepository;
+  private jwtHandler: JwtHandler;
 
   constructor() {
     this.userRepository = new UserRepository();
+    this.jwtHandler = new JwtHandler();
 
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
@@ -44,7 +45,7 @@ export class AuthBusiness {
       });
   }
 
-  public async login(parameters: LoginApi) {
+  public async login(parameters: LoginApi): Promise<string> {
     const username = parameters.username;
     const password = parameters.password;
 
@@ -53,15 +54,9 @@ export class AuthBusiness {
       const user = users[0];
       const passwordIsValid = bcrypt.compareSync(password, user.password);
       if (passwordIsValid) {
-        return jwt.sign(
-          {
-            userId: user.id.toString(),
-          },
-          CONFIG.JWT_TOKEN,
-          {
-            expiresIn: CONFIG.JWT_EXPIRES,
-          }
-        );
+        return this.jwtHandler.sign({
+          userId: user.id,
+        });
       } else {
         throw new BusinessError("Wrong password");
       }

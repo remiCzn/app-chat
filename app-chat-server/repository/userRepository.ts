@@ -28,4 +28,12 @@ export class UserRepository {
       },
     });
   }
+
+  public findUserById(id: number) {
+    return this.db.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+  }
 }

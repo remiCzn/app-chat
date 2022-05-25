@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-channels',
@@ -9,7 +10,12 @@ export class ChannelsComponent implements OnInit {
   username: string = 'David Bowie';
   servername: string = 'Server';
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getUsername().then((username) => {
+      this.username = username;
+      console.log(username);
+    });
+  }
 }
