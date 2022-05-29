@@ -17,6 +17,7 @@ model user {
 
 model server {
  id Int @id @default(autoincrement())
+ name String
  channels channel[]
 }
 

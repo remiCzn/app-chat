@@ -1,9 +1,12 @@
-<app-server-button class="cursor-pointer"></app-server-button>
-<app-server-button class="cursor-pointer"></app-server-button>
-<app-server-button class="cursor-pointer"></app-server-button>
+<app-server-button
+  *ngFor="let server of servers"
+  class="cursor-pointer"
+  [server]="server"
+></app-server-button>
 <div class="cursor-pointer">
   <div
-    class="bg-white opacity-25 h-12 w-12 flex items-center justify-center text-black text-2xl font-semibold rounded-lg mb-1 overflow-hidden">
-    <img alt="Add" class="fill-current h-10 w-10 block" src="assets/add.svg">
+    class="bg-white opacity-25 h-12 w-12 flex items-center justify-center text-black text-2xl font-semibold rounded-lg mb-1 overflow-hidden"
+  >
+    <img alt="Add" class="fill-current h-10 w-10 block" src="assets/add.svg" />
   </div>
 </div>

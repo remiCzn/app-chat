@@ -1,0 +1,4 @@
+- Connect to a Postgresql database
+- Execute script `app-chat-database\scripts\001-init_database.sql` in the database
+- `npm install` in `app-chat-model`, `app-chat-server` and `app-chat-web`
+- Execute `npx prisma db push` in `app-chat-server`, then `npx prisma generate`
