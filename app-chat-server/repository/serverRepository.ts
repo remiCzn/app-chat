@@ -1,5 +1,6 @@
-import { PrismaClient, server } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import dbClient from "../prisma/dbClient";
+import { Server } from "app-chat-model";
 
 export class ServerRepository {
   private db: PrismaClient;
@@ -8,7 +9,7 @@ export class ServerRepository {
     this.db = dbClient;
   }
 
-  async getServerList(): Promise<server[]> {
+  async getServerList(): Promise<Server[]> {
     return this.db.server.findMany();
   }
 }

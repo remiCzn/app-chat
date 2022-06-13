@@ -1,5 +1,5 @@
-import { server } from "@prisma/client";
 import { ServerRepository } from "../repository/serverRepository";
+import { Server } from "app-chat-model";
 
 export class ServerBusiness {
   private serverRepository: ServerRepository;
@@ -10,7 +10,7 @@ export class ServerBusiness {
     this.getServersList = this.getServersList.bind(this);
   }
 
-  async getServersList(): Promise<Array<server>> {
+  async getServersList(): Promise<Array<Server>> {
     return this.serverRepository.getServerList();
   }
 }

@@ -15,7 +15,6 @@ export class ChannelsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsername().then((username) => {
       this.username = username;
-      console.log(username);
     });
   }
 }
